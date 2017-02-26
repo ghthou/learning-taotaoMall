@@ -7,7 +7,29 @@
 
     <context:component-scan base-package="com.taotao.controller"/>
 
-    <mvc:annotation-driven/>
+    <bean id="utf8Charset" class="java.nio.charset.Charset" factory-method="forName">
+        <constructor-arg value="UTF-8"/>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg ref="utf8Charset"/><!--配置直接返回字符串的编码方式-->
+                <property name="writeAcceptCharset" value="false"/><!--配置是否在响应头输出所有可用的字符集 Accept-Charset:....-->
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.taotao.springmvc.converter.StringTrimConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--定义统一异常处理器-->
+    <!--<bean class="com.taotao.util.CustomExceptionResolver"/>-->
+
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"/>
