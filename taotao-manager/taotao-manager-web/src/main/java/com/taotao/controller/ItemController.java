@@ -33,8 +33,8 @@ public class ItemController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public TaotaoResult save(TbItem item) {
-		return itemService.save(item);
+	public TaotaoResult save(TbItem item, String desc, String itemParams) {
+		return itemService.save(item, desc, itemParams);
 	}
 
 }

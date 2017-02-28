@@ -10,5 +10,5 @@ public interface ItemService {
 
 	DataGridResult getItemList(int page, int rows);
 
-	TaotaoResult save(TbItem item);
+	TaotaoResult save(TbItem item, String desc, String itemParams);
 }

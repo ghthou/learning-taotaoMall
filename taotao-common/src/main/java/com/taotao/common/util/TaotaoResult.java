@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.ToString;
 
 /**
  * 淘淘商城自定义响应结构
  */
+@ToString
 public class TaotaoResult {
 
 	// 定义jackson对象

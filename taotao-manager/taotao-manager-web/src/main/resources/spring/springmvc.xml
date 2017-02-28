@@ -28,7 +28,7 @@
     </bean>
 
     <!--定义统一异常处理器-->
-    <!--<bean class="com.taotao.util.CustomExceptionResolver"/>-->
+    <bean class="com.taotao.springmvc.exception.CustomExceptionResolver"/>
 
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
