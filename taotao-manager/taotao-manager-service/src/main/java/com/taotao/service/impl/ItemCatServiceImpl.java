@@ -10,10 +10,10 @@ import com.taotao.common.pojo.easyui.TreeNode;
 import com.taotao.mapper.TbItemCatMapper;
 import com.taotao.pojo.TbItemCat;
 import com.taotao.pojo.TbItemCatExample;
-import com.taotao.service.ItemCaoService;
+import com.taotao.service.ItemCatService;
 
 @Repository
-public class ItemCaoServiceImpl implements ItemCaoService {
+public class ItemCatServiceImpl implements ItemCatService {
 	@Autowired
 	private TbItemCatMapper tbItemCatMapper;
 

@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotao.common.pojo.easyui.TreeNode;
-import com.taotao.service.ItemCaoService;
+import com.taotao.service.ItemCatService;
 
 @Controller
 @RequestMapping("/item/cat")
 public class ItemCatController extends BaseController {
 	@Autowired
-	private ItemCaoService itemCaoService;
+	private ItemCatService itemCatService;
 
 	@ResponseBody
 	@RequestMapping(value = "/list")
 	public List<TreeNode> getItemList(@RequestParam(value = "id", defaultValue = "0") long parentId) {
-		return itemCaoService.getItemCatList(parentId);
+		return itemCatService.getItemCatList(parentId);
 	}
 }
