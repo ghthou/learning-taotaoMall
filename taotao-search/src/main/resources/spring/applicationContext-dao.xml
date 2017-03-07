@@ -47,4 +47,7 @@
         <!--扫描mapper接口-->
         <property name="basePackage" value="com.taotao.mapper,com.taotao.search.mapper"/>
     </bean>
+
+    <context:component-scan base-package="com.taotao.search.dao"/>
+
 </beans>

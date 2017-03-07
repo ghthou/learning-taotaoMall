@@ -10,5 +10,4 @@ public class Item {
 	private long price;
 	private String image;
 	private String category_name;
-	private String item_des;
 }
