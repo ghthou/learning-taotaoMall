@@ -108,6 +108,7 @@ public class TaotaoResult {
 			}
 			return build(jsonNode.get("status").intValue(), jsonNode.get("msg").asText(), obj);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -144,6 +145,7 @@ public class TaotaoResult {
 			}
 			return build(jsonNode.get("status").intValue(), jsonNode.get("msg").asText(), obj);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
