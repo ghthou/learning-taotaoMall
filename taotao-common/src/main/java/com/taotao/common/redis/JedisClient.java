@@ -1,4 +1,4 @@
-package com.taotao.rest.dao;
+package com.taotao.common.redis;
 
 public interface JedisClient {
 	String get(String key);

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.taotao.common.redis.JedisClient;
 import com.taotao.common.util.JsonUtils;
 import com.taotao.common.util.TaotaoResult;
 import com.taotao.mapper.TbItemDescMapper;
@@ -16,7 +17,6 @@ import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemParamItem;
 import com.taotao.pojo.TbItemParamItemExample;
-import com.taotao.rest.dao.JedisClient;
 import com.taotao.rest.service.ItemService;
 
 @Service

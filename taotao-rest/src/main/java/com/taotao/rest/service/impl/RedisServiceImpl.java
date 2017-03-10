@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.taotao.common.redis.JedisClient;
 import com.taotao.common.util.ExceptionUtil;
 import com.taotao.common.util.TaotaoResult;
-import com.taotao.rest.dao.JedisClient;
 import com.taotao.rest.service.RedisService;
 
 @Service
