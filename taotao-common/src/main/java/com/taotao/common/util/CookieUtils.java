@@ -142,7 +142,7 @@ public final class CookieUtils {
 			if (cookieMaxage > 0)
 				cookie.setMaxAge(cookieMaxage);
 			if (null != request) {// 设置域名的cookie
-				String domainName = getDomainName(request);
+				String domainName = request.getServerName();
 				System.out.println(domainName);
 				if (!"localhost".equals(domainName)) {
 					cookie.setDomain(domainName);
@@ -172,7 +172,7 @@ public final class CookieUtils {
 			if (cookieMaxage > 0)
 				cookie.setMaxAge(cookieMaxage);
 			if (null != request) {// 设置域名的cookie
-				String domainName = getDomainName(request);
+				String domainName = request.getServerName();
 				System.out.println(domainName);
 				if (!"localhost".equals(domainName)) {
 					cookie.setDomain(domainName);
@@ -189,6 +189,7 @@ public final class CookieUtils {
 	 * 得到cookie的域名
 	 */
 	private static final String getDomainName(HttpServletRequest request) {
+
 		String domainName = null;
 
 		String serverName = request.getRequestURL().toString();
