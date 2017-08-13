@@ -23,8 +23,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/check/{param}/{type}")
-	public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
+	@RequestMapping(value = "/check/{param}/{type}")
+	public Object checkData( @PathVariable String param, @PathVariable Integer type, String callback) {
 
 		TaotaoResult result = null;
 
@@ -34,8 +34,7 @@ public class UserController {
 		}
 		if (type == null) {
 			result = TaotaoResult.build(400, "校验内容类型不能为空");
-		}
-		if (type != 1 && type != 2 && type != 3) {
+		}else if (type != 1 && type != 2 && type != 3) {
 			result = TaotaoResult.build(400, "校验内容类型错误");
 		}
 		//校验出错

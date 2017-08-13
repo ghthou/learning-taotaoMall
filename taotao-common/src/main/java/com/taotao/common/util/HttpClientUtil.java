@@ -32,9 +32,9 @@ public class HttpClientUtil {
 			// 创建uri
 			URIBuilder builder = new URIBuilder(url);
 			if (param != null) {
-				for (String key : param.keySet()) {
-					builder.addParameter(key, param.get(key));
-				}
+                for (Map.Entry<String, String> entry : param.entrySet()) {
+					builder.addParameter(entry.getKey(), entry.getValue());
+                }
 			}
 			URI uri = builder.build();
 
@@ -77,9 +77,9 @@ public class HttpClientUtil {
 			// 创建参数列表
 			if (param != null) {
 				List<NameValuePair> paramList = new ArrayList<>();
-				for (String key : param.keySet()) {
-					paramList.add(new BasicNameValuePair(key, param.get(key)));
-				}
+                for (Map.Entry<String, String> entry : param.entrySet()) {
+					paramList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+                }
 				// 模拟表单
 				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(paramList);
 				httpPost.setEntity(entity);
@@ -90,12 +90,13 @@ public class HttpClientUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				response.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 		}
 
 		return resultString;
@@ -122,12 +123,13 @@ public class HttpClientUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				response.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 		}
 
 		return resultString;

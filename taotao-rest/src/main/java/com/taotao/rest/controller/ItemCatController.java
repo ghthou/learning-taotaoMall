@@ -1,5 +1,6 @@
 package com.taotao.rest.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,9 @@ public class ItemCatController {
 		//把pojo转换成字符串
 		String json = JsonUtils.objectToJson(catResult);
 		//拼装返回值
-		return callback + "(" + json + ");";
+		if (StringUtils.isNotBlank(callback)) {
+			return callback + "(" + json + ");";
+		}
+		return json;
 	}
 }

@@ -1,15 +1,14 @@
 package com.taotao.common.springmvc.exception;
 
-import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.taotao.common.exception.CustomException;
-import com.taotao.common.util.JsonUtils;
 import com.taotao.common.util.TaotaoResult;
 
 /**
@@ -17,22 +16,15 @@ import com.taotao.common.util.TaotaoResult;
  */
 public class CustomExceptionResolver implements HandlerExceptionResolver {
 
+	private final MappingJackson2JsonView jsonView = new MappingJackson2JsonView();
+
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 		if (handler instanceof HandlerMethod) {
 			if (ex instanceof CustomException) {
-				try {
-					CustomException e = (CustomException) ex;
-					TaotaoResult result = e.getResult();
-					//todo ajax类异常处理待完善
-					response.getWriter().write(JsonUtils.objectToJson(result));
-					return null;
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				TaotaoResult result = ((CustomException) ex).getResult();
+				return new ModelAndView(jsonView, "result", result);
 			}
-			//HandlerMethod methodHandle = (HandlerMethod) handler;
-			//ex.printStackTrace();
 		}
 		return new ModelAndView("index");
 	}
